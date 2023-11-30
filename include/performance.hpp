@@ -2,22 +2,22 @@
 #include <vector>
 
 // qalgebra.
-#include <qalgebra.hpp>
+#include <qalgebra>
 
-enum class StrikeType {
+enum StrikeType {
     _ASIAN        = 0,
     _LOOKBACK_MIN = 1,
     _LOOKBACK_MAX = 2
-}; // enum class StrikeType.
+}; // enum StrikeType.
 
-enum class PerformanceType {
+enum PerformanceType {
     _BASKET   = 0,
     _WORST_OF = 1,
     _BEST_OF  = 2
-}; // enum class PerformanceType.
+}; // enum PerformanceType.
 
-typedef enum class StrikeType strike_t;
-typedef enum class PerformanceType performance_t;
+typedef enum StrikeType strike_t;
+typedef enum PerformanceType performance_t;
 
 amount_t MEAN(
     const ticker_t&, // ticker.

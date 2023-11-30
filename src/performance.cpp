@@ -1,8 +1,9 @@
 // std.
 #include <vector>
+#include <stdexcept>
 
 // qalgebra.
-#include <qalgebra.hpp>
+#include <qalgebra>
 
 // include.
 #include <performance.hpp>
@@ -65,6 +66,8 @@ amount_t PERFORMANCE(
         case PerformanceType::_BEST_OF:
             performance = ticker_index == 0 ? PERFORMANCE(p_tickers[ticker_index], p_asian_out_dates, p_asian_in_dates, p_strike_type) : MAX(performance, PERFORMANCE(p_tickers[ticker_index], p_asian_out_dates, p_asian_in_dates, p_strike_type));
             break;
+        default:
+            throw std::runtime_error("Unknown performance type");
         }
     }
     return performance;
@@ -93,5 +96,7 @@ amount_t PERFORMANCE(
         return MEAN(p_ticker, p_asian_out_dates) / MIN(p_ticker, p_asian_in_dates);
     case StrikeType::_LOOKBACK_MAX:
         return MEAN(p_ticker, p_asian_out_dates) / MAX(p_ticker, p_asian_in_dates);
+    default:
+        throw std::runtime_error("Unknown strike type");
     }
 }
