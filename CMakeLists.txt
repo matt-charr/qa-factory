@@ -1,18 +1,4 @@
-# set version.
-CMAKE_MINIMUM_REQUIRED(VERSION 3.21)
-
-# define project.
-PROJECT("qa-factory")
-
-# set binaries location.
-SET(EXECUTABLE_OUTPUT_PATH "${CMAKE_SOURCE_DIR}/bin")
-SET(CMAKE_PDB_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
-SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
-
-# include directories.
 INCLUDE_DIRECTORIES("${CMAKE_SOURCE_DIR}" "${CMAKE_SOURCE_DIR}/include")
-
-# create executable.
 FILE(GLOB SOURCES ${CMAKE_SOURCE_DIR}/src/*.cpp)
 FILE(GLOB TESTS ${CMAKE_SOURCE_DIR}/tests/*.cpp)
-ADD_EXECUTABLE(main ${CONTRACT_SOURCE_FILE}.cpp qalgebra.cpp ${SOURCES} ${TESTS})
+ADD_LIBRARY(factory_ext ${SOURCES} ${TESTS})
